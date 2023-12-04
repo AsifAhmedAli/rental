@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestIp.mw());
 
-const port = 3000;
+const port = 4000;
 
 app.use("/api", router);
 
