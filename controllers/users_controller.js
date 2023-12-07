@@ -2,7 +2,7 @@ var request = require("request");
 // Configure Cloudinary
 
 const test = (req, res) => {
-  // console.log("test");
+  console.log("test");
   // console.log(req.body);
   var reservation_data = req.body.data;
   var user_data_from_hqrentals;
