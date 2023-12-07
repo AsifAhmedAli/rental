@@ -669,7 +669,7 @@ const create_contact = (req, res) => {
   });
 };
 const test1 = (req, res) => {
-  return res.status(200).json(hello, "Heelo bete");
+  return res.status(200).json({ msg: "heelo bete" });
 };
 
 module.exports = {
