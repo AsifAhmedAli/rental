@@ -33,7 +33,7 @@ const test = (req, res) => {
       // user_data_from_hqrentals.contact.email
 
       var url =
-        "https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/view/26001853820";
+        "https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/view/26001853817";
       headers = {
         Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
         "Content-Type": "application/json",
@@ -49,7 +49,8 @@ const test = (req, res) => {
         } else {
           // console.log(body)
           var contact_data_from_freshworks = JSON.parse(body);
-          // console.log();
+          console.log(contact_data_from_freshworks);
+          console.log(user_data_from_hqrentals.contact);
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
             if (element.email == user_data_from_hqrentals.contact.email) {
