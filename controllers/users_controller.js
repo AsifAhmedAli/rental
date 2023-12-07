@@ -53,6 +53,19 @@ const test = (req, res) => {
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
             if (element.email == user_data_from_hqrentals.contact.email) {
+              var options = {
+                method: "GET",
+                url: "https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/additional-charges?pick_up_date=$req.body.data.pick_up_date&pick_up_time=req.body.data.pick_up_time&return_date=req.body.data.return_date&return_time=req.body.data.return_time&pick_up_location=req.body.data.pick_up_location_id&return_location=req.body.data.return_location_id&brand_id=req.body.data.brand_id&vehicle_class_id=req.body.data.vehicle_class_id",
+                headers: {
+                  Authorization:
+                    "Basic MlVNUGQwNW1BVDZkZWczZExUaERIR0tFTGs5YWVzNE80bXdQcFVNNzFPSjI4MkNlRWg6aHc5aXRzc2lzTEVJb2pVU2ZvMlRtYVEwVWUyeTJRT1RzRG9rcTh3RVZpSXBkSUxmSFQ=",
+                },
+              };
+              request(options, function (error, response) {
+                if (error) throw new Error(error);
+                console.log(response.body);
+              });
+
               url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
               headers = {
                 Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
@@ -443,11 +456,7 @@ const test = (req, res) => {
   // 2UMPd05mAT6deg3dLThDHGKELk9aes4O4mwPpUM71OJ282CeEh
 
   //update contact
-  if (req.body.action == "updated") {
-  }
-  if (req.body.action == "test") {
-  } else {
-  }
+
   // eyJraWQiOiJjdXN0b20tb2F1dGgta2V5aWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmcmVzaGNoYXQiLCJzdWIiOiI1Y2UwY2UyNy03MDEwLTRjZjEtYmFmMS01NDY2OTNkNDZjMjUiLCJjbGllbnRJZCI6ImZjLTg5Y2U4OTI0LTE1ZGUtNGQ2OC05ZTA4LWI2Yzg5YmY3NzQyNSIsInNjb3BlIjoiYWdlbnQ6cmVhZCBhZ2VudDpjcmVhdGUgYWdlbnQ6dXBkYXRlIGFnZW50OmRlbGV0ZSBjb252ZXJzYXRpb246Y3JlYXRlIGNvbnZlcnNhdGlvbjpyZWFkIGNvbnZlcnNhdGlvbjp1cGRhdGUgbWVzc2FnZTpjcmVhdGUgbWVzc2FnZTpnZXQgYmlsbGluZzp1cGRhdGUgcmVwb3J0czpmZXRjaCByZXBvcnRzOmV4dHJhY3QgcmVwb3J0czpyZWFkIHJlcG9ydHM6ZXh0cmFjdDpyZWFkIGFjY291bnQ6cmVhZCBkYXNoYm9hcmQ6cmVhZCB1c2VyOnJlYWQgdXNlcjpjcmVhdGUgdXNlcjp1cGRhdGUgdXNlcjpkZWxldGUgb3V0Ym91bmRtZXNzYWdlOnNlbmQgb3V0Ym91bmRtZXNzYWdlOmdldCBtZXNzYWdpbmctY2hhbm5lbHM6bWVzc2FnZTpzZW5kIG1lc3NhZ2luZy1jaGFubmVsczptZXNzYWdlOmdldCBtZXNzYWdpbmctY2hhbm5lbHM6dGVtcGxhdGU6Y3JlYXRlIG1lc3NhZ2luZy1jaGFubmVsczp0ZW1wbGF0ZTpnZXQgZmlsdGVyaW5ib3g6cmVhZCBmaWx0ZXJpbmJveDpjb3VudDpyZWFkIHJvbGU6cmVhZCBpbWFnZTp1cGxvYWQiLCJpc3MiOiJmcmVzaGNoYXQiLCJ0eXAiOiJCZWFyZXIiLCJleHAiOjIwMDEyNDY1MDYsImlhdCI6MTY4NTYyNzMwNiwianRpIjoiM2MzNzA3NmYtYzc4My00ZTU3LWFhYjItYWU4ZTlmZjYxMWU3In0.4etd9AVNQxCigpKPPbKp-B0D387Y_BX4U0GnCvccU_c
 };
 
