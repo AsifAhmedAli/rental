@@ -49,12 +49,15 @@ const test = (req, res) => {
         } else {
           // console.log(body)
           var contact_data_from_freshworks = JSON.parse(body);
-          console.log(contact_data_from_freshworks);
-          console.log(user_data_from_hqrentals.contact);
+          // console.log(contact_data_from_freshworks);
+          // console.log(user_data_from_hqrentals.contact);
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
             if (element.email == user_data_from_hqrentals.contact.email) {
-              console.log("test");
+              console.log(req.body.data.pick_up_date);
+              console.log(req.body.data.pick_up_time);
+              console.log(req.body.data.return_date);
+              console.log(req.body.data.return_time);
               var options = {
                 method: "GET",
                 url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/additional-charges?pick_up_date=${req.body.data.pick_up_date}&pick_up_time=${req.body.data.pick_up_time}&return_date=${req.body.data.return_date}&return_time=${req.body.data.return_time}&pick_up_location=${req.body.data.pick_up_location_id}&return_location=${req.body.data.return_location_id}&brand_id=${req.body.data.brand_id}&vehicle_class_id=${req.body.data.vehicle_class_id}`,
