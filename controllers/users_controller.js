@@ -668,9 +668,13 @@ const create_contact = (req, res) => {
     }
   });
 };
+const test1 = (req, res) => {
+  return res.status(200).json(hello, "Heelo bete");
+};
 
 module.exports = {
   create_contact,
   test,
+  test1,
   update_contact,
 };
