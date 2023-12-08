@@ -76,9 +76,7 @@ const test = (req, res) => {
                 if (error) throw new Error(error);
                 var contact_data_from_freshworks43 = JSON.parse(response.body);
 
-                console.log(
-                  contact_data_from_freshworks43.data.additional_charges
-                );
+                console.log(contact_data_from_freshworks43.data);
               });
 
               url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
