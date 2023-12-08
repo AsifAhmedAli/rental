@@ -64,6 +64,12 @@ const test = (req, res) => {
               // console.log(req.body.data.pick_up_time);
               // console.log(req.body.data.return_date);
               // console.log(req.body.data.return_time);
+              var cf_wifihotspot1,
+                cf_tire_and_glass_protection1,
+                cf_sim_card1,
+                cf_promo_sim_card1,
+                cf_silla_para_nios1,
+                cf_tablet__unlimited_internet_data1 = "NO";
               var options = {
                 method: "GET",
                 url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
@@ -80,9 +86,38 @@ const test = (req, res) => {
                 //   contact_data_from_freshworks43.data
                 //     .selected_additional_charges
                 // );
+
                 contact_data_from_freshworks43.data.selected_additional_charges.forEach(
                   (element) => {
-                    console.log(element);
+                    switch (element.label) {
+                      case "Sim Card": {
+                        cf_sim_card1 = "YES";
+                        break;
+                      }
+                      case "Silla Para Niños": {
+                        cf_silla_para_nios1 = "YES";
+                        break;
+                      }
+                      case "Tablet - Unlimited Internet Data": {
+                        cf_tablet__unlimited_internet_data1 = "YES";
+                        break;
+                      }
+                      case "PROMO ESPECIAL- 2 SIM CARD": {
+                        cf_promo_sim_card1 = "YES";
+                        break;
+                      }
+                      case "Wifi/Hotspot": {
+                        cf_wifihotspot1 = "YES";
+                        break;
+                      }
+                      case "Tire and Glass Protection": {
+                        cf_tire_and_glass_protection1 = "YES";
+                        break;
+                      }
+                      default:
+                        break;
+                    }
+                    // console.log(element);
                   }
                 );
               });
@@ -118,7 +153,16 @@ const test = (req, res) => {
                     cf_drop_off_location: req.body.data.return_location_label,
                     cf_drop_off_time: req.body.data.return_time,
                     // cf_vehicle_class: req.body.data.,
-                    // cf_terminal: req.body.data.,
+                    // cf_terminal: req.body.data.,/
+
+                    cf_wifihotspot: cf_wifihotspot1,
+                    cf_tire_and_glass_protection: cf_tire_and_glass_protection1,
+                    cf_sim_card: cf_sim_card1,
+                    cf_promo_sim_card: cf_promo_sim_card1,
+                    cf_silla_para_nios: cf_silla_para_nios1,
+                    cf_tablet__unlimited_internet_data:
+                      cf_tablet__unlimited_internet_data1,
+
                     cf_pick_up_date: req.body.data.pick_up_date,
                     cf_drop_off_date: req.body.data.return_date,
                     cf_pick_up_time: req.body.data.pick_up_time,
