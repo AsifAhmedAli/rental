@@ -112,77 +112,76 @@ const test = (req, res) => {
                       // console.log(element.label);
                       cf_tire_and_glass_protection1 = "YES";
                     }
-                    // console.log(element);
                   }
                 );
-              });
+                url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
+                headers = {
+                  Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
+                  "Content-Type": "application/json",
+                };
 
-              url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
-              headers = {
-                Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
-                "Content-Type": "application/json",
-              };
+                requestData = {
+                  contact: {
+                    first_name: req.body.data.first_name,
+                    last_name: req.body.data.last_name,
+                    display_name:
+                      req.body.data.first_name + " " + req.body.data.last_name,
+                    city: req.body.data.city,
+                    state: req.body.data.state,
+                    zipcode: req.body.data.zip,
+                    country: req.body.data.country,
+                    email: req.body.data.email,
+                    mobile_number: req.body.data.phone_number,
+                    address: req.body.data.street,
+                    custom_field: {
+                      // flight_departure_date
 
-              requestData = {
-                contact: {
-                  first_name: req.body.data.first_name,
-                  last_name: req.body.data.last_name,
-                  display_name:
-                    req.body.data.first_name + " " + req.body.data.last_name,
-                  city: req.body.data.city,
-                  state: req.body.data.state,
-                  zipcode: req.body.data.zip,
-                  country: req.body.data.country,
-                  email: req.body.data.email,
-                  mobile_number: req.body.data.phone_number,
-                  address: req.body.data.street,
-                  custom_field: {
-                    // flight_departure_date
+                      cf_flight_airline: req.body.data.flight_airline,
+                      cf_flight_number: req.body.data.flight_number,
+                      cf_departure_flight_airline:
+                        req.body.data.flight_departure_airline,
+                      cf_departure_flight_number:
+                        req.body.data.flight_departure_number,
+                      cf_pick_up_location: req.body.data.pick_up_location_label,
+                      cf_drop_off_location: req.body.data.return_location_label,
+                      cf_drop_off_time: req.body.data.return_time,
+                      // cf_vehicle_class: req.body.data.,
+                      // cf_terminal: req.body.data.,/
 
-                    cf_flight_airline: req.body.data.flight_airline,
-                    cf_flight_number: req.body.data.flight_number,
-                    cf_departure_flight_airline:
-                      req.body.data.flight_departure_airline,
-                    cf_departure_flight_number:
-                      req.body.data.flight_departure_number,
-                    cf_pick_up_location: req.body.data.pick_up_location_label,
-                    cf_drop_off_location: req.body.data.return_location_label,
-                    cf_drop_off_time: req.body.data.return_time,
-                    // cf_vehicle_class: req.body.data.,
-                    // cf_terminal: req.body.data.,/
+                      cf_wifihotspot: cf_wifihotspot1,
+                      cf_tire_and_glass_protection:
+                        cf_tire_and_glass_protection1,
+                      cf_sim_card: cf_sim_card1,
+                      cf_promo_sim_card: cf_promo_sim_card1,
+                      cf_silla_para_nios: cf_silla_para_nios1,
+                      cf_tablet__unlimited_internet_data:
+                        cf_tablet__unlimited_internet_data1,
 
-                    cf_wifihotspot: cf_wifihotspot1,
-                    cf_tire_and_glass_protection: cf_tire_and_glass_protection1,
-                    cf_sim_card: cf_sim_card1,
-                    cf_promo_sim_card: cf_promo_sim_card1,
-                    cf_silla_para_nios: cf_silla_para_nios1,
-                    cf_tablet__unlimited_internet_data:
-                      cf_tablet__unlimited_internet_data1,
-
-                    cf_pick_up_date: req.body.data.pick_up_date,
-                    cf_drop_off_date: req.body.data.return_date,
-                    cf_pick_up_time: req.body.data.pick_up_time,
-                    // cf_dl_number: req.body.data.,
-                    // cf_dl_expiration_date: req.body.data.,
+                      cf_pick_up_date: req.body.data.pick_up_date,
+                      cf_drop_off_date: req.body.data.return_date,
+                      cf_pick_up_time: req.body.data.pick_up_time,
+                      // cf_dl_number: req.body.data.,
+                      // cf_dl_expiration_date: req.body.data.,
+                    },
                   },
-                },
-              };
-              console.log(cf_wifihotspot1);
-              console.log(cf_promo_sim_card1);
-              console.log(cf_tablet__unlimited_internet_data);
-              options = {
-                url,
-                method: "PUT",
-                headers,
-                json: requestData, // Automatically sets the content-type to application/json
-              };
-              request(options, (error, response, body) => {
-                if (error) {
-                  console.error(`Error: ${error}`);
-                } else {
-                  console.log("data updated");
-                  return res.status(200).json({ mgs: "Data Updated" });
-                }
+                };
+                console.log(cf_wifihotspot1);
+                console.log(cf_promo_sim_card1);
+                console.log(cf_tablet__unlimited_internet_data1);
+                options = {
+                  url,
+                  method: "PUT",
+                  headers,
+                  json: requestData, // Automatically sets the content-type to application/json
+                };
+                request(options, (error, response, body) => {
+                  if (error) {
+                    console.error(`Error: ${error}`);
+                  } else {
+                    console.log("data updated");
+                    return res.status(200).json({ mgs: "Data Updated" });
+                  }
+                });
               });
             }
           });
