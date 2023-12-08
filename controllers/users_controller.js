@@ -74,7 +74,8 @@ const test = (req, res) => {
               };
               request(options, function (error, response) {
                 if (error) throw new Error(error);
-                console.log(response.body);
+                var contact_data_from_freshworks = JSON.parse(response.body);
+                console.log(contact_data_from_freshworks);
               });
 
               url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
