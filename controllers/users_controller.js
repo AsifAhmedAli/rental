@@ -92,24 +92,24 @@ const test = (req, res) => {
                     // console.log(element.label);
                     // switch (element.label) {
                     if (element.label == "Sim Card") {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_sim_card1 = "YES";
                     } else if (element.label == "Silla Para Niños") {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_silla_para_nios1 = "YES";
                     } else if (
                       element.label == "Tablet - Unlimited Internet Data"
                     ) {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_tablet__unlimited_internet_data1 = "YES";
                     } else if (element.label == "PROMO ESPECIAL- 2 SIM CARD") {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_promo_sim_card1 = "YES";
                     } else if (element.label == "Wifi/Hotspot") {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_wifihotspot1 = "YES";
                     } else if (element.label == "Tire and Glass Protection") {
-                      console.log(element.label);
+                      // console.log(element.label);
                       cf_tire_and_glass_protection1 = "YES";
                     }
                     // console.log(element);
@@ -122,6 +122,7 @@ const test = (req, res) => {
                 Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
                 "Content-Type": "application/json",
               };
+
               requestData = {
                 contact: {
                   first_name: req.body.data.first_name,
@@ -166,6 +167,9 @@ const test = (req, res) => {
                   },
                 },
               };
+              console.log(cf_wifihotspot1);
+              console.log(cf_promo_sim_card1);
+              console.log(cf_tablet__unlimited_internet_data);
               options = {
                 url,
                 method: "PUT",
