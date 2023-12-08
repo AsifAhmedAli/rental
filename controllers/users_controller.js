@@ -58,7 +58,7 @@ const test = (req, res) => {
               // const timestampString = '2023-12-07T08:00:00.000000Z';
               const dateObject = new Date(req.body.data.pick_up_date);
 
-              console.log(dateObject);
+              console.log(dateObject.toLocaleDateString());
               // console.log(req.body.data.pick_up_time);
               // console.log(req.body.data.return_date);
               // console.log(req.body.data.return_time);
