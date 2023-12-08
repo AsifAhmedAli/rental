@@ -77,7 +77,7 @@ const test = (req, res) => {
                 var contact_data_from_freshworks = JSON.parse(response.body);
 
                 console.log(
-                  contact_data_from_freshworks.data.additional_charges
+                  contact_data_from_freshworks.data.additional_charges[0]
                 );
               });
 
