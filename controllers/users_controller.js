@@ -66,7 +66,7 @@ const test = (req, res) => {
               // console.log(req.body.data.return_time);
               var options = {
                 method: "GET",
-                url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/additional-charges?pick_up_date=${pick_up_date1}&pick_up_time=${req.body.data.pick_up_time}&return_date=${return_date2}&return_time=${req.body.data.return_time}&pick_up_location=${req.body.data.pick_up_location_id}&return_location=${req.body.data.return_location_id}&brand_id=${req.body.data.brand_id}&vehicle_class_id=${req.body.data.vehicle_class_id}`,
+                url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
                 headers: {
                   Authorization:
                     "Basic MlVNUGQwNW1BVDZkZWczZExUaERIR0tFTGs5YWVzNE80bXdQcFVNNzFPSjI4MkNlRWg6aHc5aXRzc2lzTEVJb2pVU2ZvMlRtYVEwVWUyeTJRT1RzRG9rcTh3RVZpSXBkSUxmSFQ=",
@@ -77,7 +77,7 @@ const test = (req, res) => {
                 var contact_data_from_freshworks = JSON.parse(response.body);
 
                 console.log(
-                  contact_data_from_freshworks.data.additional_charges[1]
+                  contact_data_from_freshworks.data.additional_charges[0]
                 );
               });
 
@@ -470,6 +470,61 @@ const test = (req, res) => {
   // https://api-america-2.caagcrm.com/api-america-2/
   // 2UMPd05mAT6deg3dLThDHGKELk9aes4O4mwPpUM71OJ282CeEh
 
+  //   "id": 61,
+  //   "additional_charge_category": {
+  //       "id": 2,
+  //       "label": {
+  //           "en": "Equipment & Services",
+  //           "es": "Equipos y Servicios"
+  //       },
+  //       "icon": null,
+  //       "order": 2,
+  //       "active": 1,
+  //       "version": 1,
+  //       "allowed_roles_for_edit": null
+  //   },
+  //   "label": "Wifi/Hotspot",
+  //   "label_for_website": {
+  //       "en": "Wifi/Hotspot",
+  //       "es": "Wifi/Hotspot",
+  //       "pt": "Wifi/Hotspot"
+  //   },
+  //   "icon": "fas fa-wifi",
+  //   "image": null,
+  //   "recommended": false,
+  //   "short_description": "<p>Up&nbsp;to 40Gb Great option to use with WHATTSAPP, WAZE, GOOGLE MAPS from your own phone.</p>",
+  //   "description": "Wifi/Hotspot",
+  //   "order": null,
+  //   "selected_quantity": 1,
+  //   "charge_type": "amount",
+  //   "base_price": "29.9900000",
+  //   "base_price_with_taxes": {
+  //       "currency": "usd",
+  //       "currency_icon": "$",
+  //       "amount": "32.09",
+  //       "usd_amount": "32.09",
+  //       "amount_for_display": "$32.09"
+  //   },
+  //   "total_price": {
+  //       "currency": "usd",
+  //       "currency_icon": "$",
+  //       "amount": "29.99",
+  //       "usd_amount": "29.99",
+  //       "amount_for_display": "$29.99"
+  //   },
+  //   "total_price_with_taxes": {
+  //       "currency": "usd",
+  //       "currency_icon": "$",
+  //       "amount": "32.09",
+  //       "usd_amount": "32.09",
+  //       "amount_for_display": "$32.09"
+  //   },
+  //   "distance_package": {
+  //       "61_0": "None"
+  //   },
+  //   "distance_package_rates": false,
+  //   "selection_type": "only_one"
+  // }
   //update contact
 
   // eyJraWQiOiJjdXN0b20tb2F1dGgta2V5aWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmcmVzaGNoYXQiLCJzdWIiOiI1Y2UwY2UyNy03MDEwLTRjZjEtYmFmMS01NDY2OTNkNDZjMjUiLCJjbGllbnRJZCI6ImZjLTg5Y2U4OTI0LTE1ZGUtNGQ2OC05ZTA4LWI2Yzg5YmY3NzQyNSIsInNjb3BlIjoiYWdlbnQ6cmVhZCBhZ2VudDpjcmVhdGUgYWdlbnQ6dXBkYXRlIGFnZW50OmRlbGV0ZSBjb252ZXJzYXRpb246Y3JlYXRlIGNvbnZlcnNhdGlvbjpyZWFkIGNvbnZlcnNhdGlvbjp1cGRhdGUgbWVzc2FnZTpjcmVhdGUgbWVzc2FnZTpnZXQgYmlsbGluZzp1cGRhdGUgcmVwb3J0czpmZXRjaCByZXBvcnRzOmV4dHJhY3QgcmVwb3J0czpyZWFkIHJlcG9ydHM6ZXh0cmFjdDpyZWFkIGFjY291bnQ6cmVhZCBkYXNoYm9hcmQ6cmVhZCB1c2VyOnJlYWQgdXNlcjpjcmVhdGUgdXNlcjp1cGRhdGUgdXNlcjpkZWxldGUgb3V0Ym91bmRtZXNzYWdlOnNlbmQgb3V0Ym91bmRtZXNzYWdlOmdldCBtZXNzYWdpbmctY2hhbm5lbHM6bWVzc2FnZTpzZW5kIG1lc3NhZ2luZy1jaGFubmVsczptZXNzYWdlOmdldCBtZXNzYWdpbmctY2hhbm5lbHM6dGVtcGxhdGU6Y3JlYXRlIG1lc3NhZ2luZy1jaGFubmVsczp0ZW1wbGF0ZTpnZXQgZmlsdGVyaW5ib3g6cmVhZCBmaWx0ZXJpbmJveDpjb3VudDpyZWFkIHJvbGU6cmVhZCBpbWFnZTp1cGxvYWQiLCJpc3MiOiJmcmVzaGNoYXQiLCJ0eXAiOiJCZWFyZXIiLCJleHAiOjIwMDEyNDY1MDYsImlhdCI6MTY4NTYyNzMwNiwianRpIjoiM2MzNzA3NmYtYzc4My00ZTU3LWFhYjItYWU4ZTlmZjYxMWU3In0.4etd9AVNQxCigpKPPbKp-B0D387Y_BX4U0GnCvccU_c
