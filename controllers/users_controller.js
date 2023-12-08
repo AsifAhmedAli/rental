@@ -89,6 +89,7 @@ const test = (req, res) => {
 
                 contact_data_from_freshworks43.data.selected_additional_charges.forEach(
                   (element) => {
+                    console.log(element.label);
                     switch (element.label) {
                       case "Sim Card": {
                         cf_sim_card1 = "YES";
