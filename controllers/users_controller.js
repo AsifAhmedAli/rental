@@ -64,12 +64,12 @@ const test = (req, res) => {
               // console.log(req.body.data.pick_up_time);
               // console.log(req.body.data.return_date);
               // console.log(req.body.data.return_time);
-              var cf_wifihotspot1,
-                cf_tire_and_glass_protection1,
-                cf_sim_card1,
-                cf_promo_sim_card1,
-                cf_silla_para_nios1,
-                cf_tablet__unlimited_internet_data1 = "NO";
+              var cf_wifihotspot1 = "NO";
+              var cf_tire_and_glass_protection1 = "NO";
+              var cf_sim_card1 = "NO";
+              var cf_promo_sim_card1 = "NO";
+              var cf_silla_para_nios1 = "NO";
+              var cf_tablet__unlimited_internet_data1 = "NO";
               var options = {
                 method: "GET",
                 url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
