@@ -90,33 +90,21 @@ const test = (req, res) => {
                 contact_data_from_freshworks43.data.selected_additional_charges.forEach(
                   (element) => {
                     // console.log(element.label);
-                    switch (element.label) {
-                      case "Sim Card": {
-                        cf_sim_card1 = "YES";
-                        break;
-                      }
-                      case "Silla Para Niños": {
-                        cf_silla_para_nios1 = "YES";
-                        break;
-                      }
-                      case "Tablet - Unlimited Internet Data": {
-                        cf_tablet__unlimited_internet_data1 = "YES";
-                        break;
-                      }
-                      case "PROMO ESPECIAL- 2 SIM CARD": {
-                        cf_promo_sim_card1 = "YES";
-                        break;
-                      }
-                      case "Wifi/Hotspot": {
-                        cf_wifihotspot1 = "YES";
-                        break;
-                      }
-                      case "Tire and Glass Protection": {
-                        cf_tire_and_glass_protection1 = "YES";
-                        break;
-                      }
-                      default:
-                        break;
+                    // switch (element.label) {
+                    if (element.label == "Sim Card") {
+                      cf_sim_card1 = "YES";
+                    } else if (element.label == "Silla Para Niños") {
+                      cf_silla_para_nios1 = "YES";
+                    } else if (
+                      element.label == "Tablet - Unlimited Internet Data"
+                    ) {
+                      cf_tablet__unlimited_internet_data1 = "YES";
+                    } else if (element.label == "PROMO ESPECIAL- 2 SIM CARD") {
+                      cf_promo_sim_card1 = "YES";
+                    } else if (element.label == "Wifi/Hotspot") {
+                      cf_wifihotspot1 = "YES";
+                    } else if (element.label == "Tire and Glass Protection") {
+                      cf_tire_and_glass_protection1 = "YES";
                     }
                     // console.log(element);
                   }
