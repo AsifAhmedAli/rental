@@ -67,7 +67,7 @@ const test = (req, res) => {
               var cf_wifihotspot1 = "NO";
               var cf_tire_and_glass_protection1 = "NO";
               var cf_sim_card1 = "NO";
-              var cf_promo_sim_card1 = "NO";
+              var cf_promo_sim_card1 = "No";
               var cf_silla_para_nios1 = "NO";
               var cf_tablet__unlimited_internet_data1 = "NO";
               var options = {
@@ -104,7 +104,7 @@ const test = (req, res) => {
                       cf_tablet__unlimited_internet_data1 = "YES";
                     } else if (element.label == "PROMO ESPECIAL- 2 SIM CARD") {
                       // console.log(element.label);
-                      cf_promo_sim_card1 = "YES";
+                      cf_promo_sim_card1 = "Yes";
                     } else if (element.label == "Wifi/Hotspot") {
                       // console.log(element.label);
                       cf_wifihotspot1 = "YES";
