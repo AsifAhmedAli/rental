@@ -54,7 +54,7 @@ const test = (req, res) => {
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
             if (element.email == user_data_from_hqrentals.contact.email) {
-              console.log(req.body.data.pick_up_date);
+              // console.log(req.body.data.pick_up_date);
               // const timestampString = '2023-12-07T08:00:00.000000Z';
               var pick_up_date1 = new Date(req.body.data.pick_up_date);
               pick_up_date1 = pick_up_date1.toLocaleDateString();
