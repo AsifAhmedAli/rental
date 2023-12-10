@@ -77,7 +77,31 @@ const test = (req, res) => {
                 req.body.data.status == "open" ||
                 req.body.data.status == "OPEN"
               ) {
-                cf_reservation_made1 = "YES";
+                cf_reservation_made1 = "OPEN";
+              } else if (
+                req.body.data.status == "PENDING" ||
+                req.body.data.status == "Pending" ||
+                req.body.data.status == "pending"
+              ) {
+                cf_reservation_made1 = "PENDING";
+              } else if (
+                req.body.data.status == "RENTAL" ||
+                req.body.data.status == "Rental" ||
+                req.body.data.status == "rental"
+              ) {
+                cf_reservation_made1 = "RENTAL";
+              } else if (
+                req.body.data.status == "COMPLETED" ||
+                req.body.data.status == "Completed" ||
+                req.body.data.status == "completed"
+              ) {
+                cf_reservation_made1 = "COMPLETED";
+              } else if (
+                req.body.data.status == "QUOTE" ||
+                req.body.data.status == "Quote" ||
+                req.body.data.status == "quote"
+              ) {
+                cf_reservation_made1 = "QUOTE";
               }
               var options = {
                 method: "GET",
@@ -174,7 +198,7 @@ const test = (req, res) => {
                       cf_drop_off_date: req.body.data.return_date,
                       cf_pick_up_time: req.body.data.pick_up_time,
                       cf_terminal: req.body.data.f381,
-                      // cf_gate:
+                      cf_gate: req.body.data.f396,
                       // cf_dl_number: req.body.data.,
                       // cf_dl_expiration_date: req.body.data.,
                     },
