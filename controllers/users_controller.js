@@ -49,7 +49,7 @@ const test = (req, res) => {
         } else {
           // console.log(body)
           var contact_data_from_freshworks = JSON.parse(body);
-          console.log(contact_data_from_freshworks);
+          // console.log(contact_data_from_freshworks);
           // console.log(user_data_from_hqrentals.contact);
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
