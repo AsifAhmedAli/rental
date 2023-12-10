@@ -71,6 +71,14 @@ const test = (req, res) => {
               var cf_silla_para_nios1 = "NO";
               var cf_promo_wifihotspot1 = "NO";
               var cf_tablet__unlimited_internet_data1 = "NO";
+              var cf_reservation_made1 = "NO";
+              if (
+                req.body.data.status == "Open" ||
+                req.body.data.status == "open" ||
+                req.body.data.status == "OPEN"
+              ) {
+                cf_reservation_made1 = "YES";
+              }
               var options = {
                 method: "GET",
                 url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
@@ -161,7 +169,7 @@ const test = (req, res) => {
                       cf_tablet__unlimited_internet_data:
                         cf_tablet__unlimited_internet_data1,
                       cf_promo_wifihotspot: cf_promo_wifihotspot1,
-
+                      cf_reservation_made: cf_reservation_made1,
                       cf_pick_up_date: req.body.data.pick_up_date,
                       cf_drop_off_date: req.body.data.return_date,
                       cf_pick_up_time: req.body.data.pick_up_time,
@@ -171,9 +179,9 @@ const test = (req, res) => {
                     },
                   },
                 };
-                console.log(cf_wifihotspot1);
-                console.log(cf_promo_sim_card1);
-                console.log(cf_tablet__unlimited_internet_data1);
+                // console.log(cf_wifihotspot1);
+                // console.log(cf_promo_sim_card1);
+                // console.log(cf_tablet__unlimited_internet_data1);
                 options = {
                   url,
                   method: "PUT",
