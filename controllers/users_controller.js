@@ -174,6 +174,7 @@ const test = (req, res) => {
                       cf_drop_off_date: req.body.data.return_date,
                       cf_pick_up_time: req.body.data.pick_up_time,
                       cf_terminal: req.body.data.f381,
+                      // cf_gate:
                       // cf_dl_number: req.body.data.,
                       // cf_dl_expiration_date: req.body.data.,
                     },
