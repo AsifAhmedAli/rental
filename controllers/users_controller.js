@@ -6,7 +6,7 @@ const test = (req, res) => {
   // console.log(req.body);
   var reservation_data = req.body.data;
   var user_data_from_hqrentals;
-  // console.log(req.body.data);
+  console.log(req.body.data);
   // console.log(req.body.data.flight_number);
   // console.log(req.body.data.flight_departure_airline);
   // console.log(req.body.data.flight_departure_number);
