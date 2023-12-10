@@ -6,7 +6,7 @@ const test = (req, res) => {
   // console.log(req.body);
   var reservation_data = req.body.data;
   var user_data_from_hqrentals;
-  // console.log(req.body.data.flight_airline);
+  console.log(req.body.data);
   // console.log(req.body.data.flight_number);
   // console.log(req.body.data.flight_departure_airline);
   // console.log(req.body.data.flight_departure_number);
@@ -69,6 +69,7 @@ const test = (req, res) => {
               var cf_sim_card1 = "NO";
               var cf_promo_sim_card1 = "No";
               var cf_silla_para_nios1 = "NO";
+              var cf_promo_wifihotspot1 = "NO";
               var cf_tablet__unlimited_internet_data1 = "NO";
               var options = {
                 method: "GET",
@@ -89,7 +90,7 @@ const test = (req, res) => {
 
                 contact_data_from_freshworks43.data.selected_additional_charges.forEach(
                   (element) => {
-                    // console.log(element.label);
+                    console.log(element.label);
                     // switch (element.label) {
                     if (element.label == "Sim Card") {
                       // console.log(element.label);
@@ -111,6 +112,9 @@ const test = (req, res) => {
                     } else if (element.label == "Tire and Glass Protection") {
                       // console.log(element.label);
                       cf_tire_and_glass_protection1 = "YES";
+                    } else if (element.label == "Tire and Glass Protection") {
+                      // console.log(element.label);
+                      cf_promo_wifihotspot1 = "YES";
                     }
                   }
                 );
