@@ -6,7 +6,7 @@ const test = (req, res) => {
   // console.log(req.body);
   var reservation_data = req.body.data;
   var user_data_from_hqrentals;
-  console.log(req.body.data);
+  // console.log(req.body.data);
   // console.log(req.body.data.flight_number);
   // console.log(req.body.data.flight_departure_airline);
   // console.log(req.body.data.flight_departure_number);
@@ -49,7 +49,7 @@ const test = (req, res) => {
         } else {
           // console.log(body)
           var contact_data_from_freshworks = JSON.parse(body);
-          // console.log(contact_data_from_freshworks);
+          console.log(contact_data_from_freshworks);
           // console.log(user_data_from_hqrentals.contact);
           contact_data_from_freshworks.contacts.forEach((element) => {
             //
@@ -71,7 +71,7 @@ const test = (req, res) => {
               var cf_silla_para_nios1 = "NO";
               var cf_promo_wifihotspot1 = "NO";
               var cf_tablet__unlimited_internet_data1 = "NO";
-              var cf_reservation_made1 = "NO";
+              var cf_reservation_made1 = "PENDING";
               if (
                 req.body.data.status == "Open" ||
                 req.body.data.status == "open" ||
