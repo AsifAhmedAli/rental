@@ -29,7 +29,7 @@ const test = (req, res) => {
       if (error) throw new Error(error);
       // console.log(response.body);
       user_data_from_hqrentals = JSON.parse(response.body);
-      // console.log(user_data_from_hqrentals.contact);
+      console.log(user_data_from_hqrentals.contact);
       // user_data_from_hqrentals.contact.email
       var contact_data_from_freshworks;
       var url =
