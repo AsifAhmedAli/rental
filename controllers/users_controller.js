@@ -25,7 +25,7 @@ const test = async (req, res) => {
       },
       formData: {},
     };
-    request(options, function (error, response) {
+    await request(options, function (error, response) {
       if (error) throw new Error(error);
       // console.log(response.body);
       user_data_from_hqrentals = JSON.parse(response.body);
@@ -43,7 +43,7 @@ const test = async (req, res) => {
         method: "GET",
         headers,
       };
-      await request(options, (error, response, body) => {
+      request(options, (error, response, body) => {
         if (error) {
           console.error(`Error: ${error}`);
         } else {
