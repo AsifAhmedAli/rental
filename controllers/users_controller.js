@@ -1,7 +1,7 @@
 var request = require("request");
 // Configure Cloudinary
 
-const test = async (req, res) => {
+const test = (req, res) => {
   // console.log("test");
   // console.log(req.body);
   var reservation_data = req.body.data;
@@ -25,13 +25,13 @@ const test = async (req, res) => {
       },
       formData: {},
     };
-    await request(options, function (error, response) {
+    request(options, function (error, response) {
       if (error) throw new Error(error);
       // console.log(response.body);
       user_data_from_hqrentals = JSON.parse(response.body);
       // console.log(user_data_from_hqrentals.contact);
       // user_data_from_hqrentals.contact.email
-
+      var contact_data_from_freshworks;
       var url =
         "https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/view/26001853820";
       headers = {
@@ -47,184 +47,184 @@ const test = async (req, res) => {
         if (error) {
           console.error(`Error: ${error}`);
         } else {
-          // console.log(body)
-          var contact_data_from_freshworks = JSON.parse(body);
-          // console.log(contact_data_from_freshworks);
-          // console.log(user_data_from_hqrentals.contact);
-          contact_data_from_freshworks.contacts.forEach((element) => {
-            //
-            if (element.email == user_data_from_hqrentals.contact.email) {
-              // console.log(req.body.data.pick_up_date);
-              // const timestampString = '2023-12-07T08:00:00.000000Z';
-              var pick_up_date1 = new Date(req.body.data.pick_up_date);
-              pick_up_date1 = pick_up_date1.toLocaleDateString();
-              var return_date2 = new Date(req.body.data.return_date);
-              return_date2 = return_date2.toLocaleDateString();
-              // console.log();
-              // console.log(req.body.data.pick_up_time);
-              // console.log(req.body.data.return_date);
-              // console.log(req.body.data.return_time);
-              var cf_wifihotspot1 = "NO";
-              var cf_tire_and_glass_protection1 = "NO";
-              var cf_sim_card1 = "NO";
-              var cf_promo_sim_card1 = "No";
-              var cf_silla_para_nios1 = "NO";
-              var cf_promo_wifihotspot1 = "NO";
-              var cf_tablet__unlimited_internet_data1 = "NO";
-              var cf_reservation_made1 = "PENDING";
-              if (
-                req.body.data.status == "Open" ||
-                req.body.data.status == "open" ||
-                req.body.data.status == "OPEN"
-              ) {
-                cf_reservation_made1 = "OPEN";
-              } else if (
-                req.body.data.status == "PENDING" ||
-                req.body.data.status == "Pending" ||
-                req.body.data.status == "pending"
-              ) {
-                cf_reservation_made1 = "PENDING";
-              } else if (
-                req.body.data.status == "RENTAL" ||
-                req.body.data.status == "Rental" ||
-                req.body.data.status == "rental"
-              ) {
-                cf_reservation_made1 = "RENTAL";
-              } else if (
-                req.body.data.status == "COMPLETED" ||
-                req.body.data.status == "Completed" ||
-                req.body.data.status == "completed"
-              ) {
-                cf_reservation_made1 = "COMPLETED";
-              } else if (
-                req.body.data.status == "QUOTE" ||
-                req.body.data.status == "Quote" ||
-                req.body.data.status == "quote"
-              ) {
-                cf_reservation_made1 = "QUOTE";
-              }
-              var options = {
-                method: "GET",
-                url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
-                headers: {
-                  Authorization:
-                    "Basic MlVNUGQwNW1BVDZkZWczZExUaERIR0tFTGs5YWVzNE80bXdQcFVNNzFPSjI4MkNlRWg6aHc5aXRzc2lzTEVJb2pVU2ZvMlRtYVEwVWUyeTJRT1RzRG9rcTh3RVZpSXBkSUxmSFQ=",
+          contact_data_from_freshworks = JSON.parse(body);
+        }
+      }).then(() => {
+        // console.log(contact_data_from_freshworks);
+        // console.log(user_data_from_hqrentals.contact);
+        contact_data_from_freshworks.contacts.forEach((element) => {
+          //
+          if (element.email == user_data_from_hqrentals.contact.email) {
+            // console.log(req.body.data.pick_up_date);
+            // const timestampString = '2023-12-07T08:00:00.000000Z';
+            var pick_up_date1 = new Date(req.body.data.pick_up_date);
+            pick_up_date1 = pick_up_date1.toLocaleDateString();
+            var return_date2 = new Date(req.body.data.return_date);
+            return_date2 = return_date2.toLocaleDateString();
+            // console.log();
+            // console.log(req.body.data.pick_up_time);
+            // console.log(req.body.data.return_date);
+            // console.log(req.body.data.return_time);
+            var cf_wifihotspot1 = "NO";
+            var cf_tire_and_glass_protection1 = "NO";
+            var cf_sim_card1 = "NO";
+            var cf_promo_sim_card1 = "No";
+            var cf_silla_para_nios1 = "NO";
+            var cf_promo_wifihotspot1 = "NO";
+            var cf_tablet__unlimited_internet_data1 = "NO";
+            var cf_reservation_made1 = "PENDING";
+            if (
+              req.body.data.status == "Open" ||
+              req.body.data.status == "open" ||
+              req.body.data.status == "OPEN"
+            ) {
+              cf_reservation_made1 = "OPEN";
+            } else if (
+              req.body.data.status == "PENDING" ||
+              req.body.data.status == "Pending" ||
+              req.body.data.status == "pending"
+            ) {
+              cf_reservation_made1 = "PENDING";
+            } else if (
+              req.body.data.status == "RENTAL" ||
+              req.body.data.status == "Rental" ||
+              req.body.data.status == "rental"
+            ) {
+              cf_reservation_made1 = "RENTAL";
+            } else if (
+              req.body.data.status == "COMPLETED" ||
+              req.body.data.status == "Completed" ||
+              req.body.data.status == "completed"
+            ) {
+              cf_reservation_made1 = "COMPLETED";
+            } else if (
+              req.body.data.status == "QUOTE" ||
+              req.body.data.status == "Quote" ||
+              req.body.data.status == "quote"
+            ) {
+              cf_reservation_made1 = "QUOTE";
+            }
+            var options = {
+              method: "GET",
+              url: `https://api-america-3.us5.hqrentals.app/api-america-3/car-rental/reservations/${req.body.data.id}`,
+              headers: {
+                Authorization:
+                  "Basic MlVNUGQwNW1BVDZkZWczZExUaERIR0tFTGs5YWVzNE80bXdQcFVNNzFPSjI4MkNlRWg6aHc5aXRzc2lzTEVJb2pVU2ZvMlRtYVEwVWUyeTJRT1RzRG9rcTh3RVZpSXBkSUxmSFQ=",
+              },
+            };
+            request(options, function (error, response) {
+              if (error) throw new Error(error);
+              var contact_data_from_freshworks43 = JSON.parse(response.body);
+
+              // console.log(
+              //   contact_data_from_freshworks43.data
+              //     .selected_additional_charges
+              // );
+
+              contact_data_from_freshworks43.data.selected_additional_charges.forEach(
+                (element) => {
+                  console.log(element.label);
+                  // switch (element.label) {
+                  if (element.label == "Sim Card") {
+                    // console.log(element.label);
+                    cf_sim_card1 = "YES";
+                  } else if (element.label == "Silla Para Niños") {
+                    // console.log(element.label);
+                    cf_silla_para_nios1 = "YES";
+                  } else if (
+                    element.label == "Tablet - Unlimited Internet Data"
+                  ) {
+                    // console.log(element.label);
+                    cf_tablet__unlimited_internet_data1 = "YES";
+                  } else if (element.label == "PROMO ESPECIAL- 2 SIM CARD") {
+                    // console.log(element.label);
+                    cf_promo_sim_card1 = "Yes";
+                  } else if (element.label == "Wifi/Hotspot") {
+                    // console.log(element.label);
+                    cf_wifihotspot1 = "YES";
+                  } else if (element.label == "Tire and Glass Protection") {
+                    // console.log(element.label);
+                    cf_tire_and_glass_protection1 = "YES";
+                  } else if (element.label == "PROMO Wifi/Hotspot") {
+                    // console.log(element.label);
+                    cf_promo_wifihotspot1 = "YES";
+                  }
+                }
+              );
+              url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
+              headers = {
+                Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
+                "Content-Type": "application/json",
+              };
+
+              requestData = {
+                contact: {
+                  first_name: req.body.data.first_name,
+                  last_name: req.body.data.last_name,
+                  display_name:
+                    req.body.data.first_name + " " + req.body.data.last_name,
+                  city: req.body.data.city,
+                  state: req.body.data.state,
+                  zipcode: req.body.data.zip,
+                  country: req.body.data.country,
+                  email: req.body.data.email,
+                  mobile_number: req.body.data.phone_number,
+                  address: req.body.data.street,
+                  custom_field: {
+                    // flight_departure_date
+
+                    cf_flight_airline: req.body.data.flight_airline,
+                    cf_flight_number: req.body.data.flight_number,
+                    cf_departure_flight_airline:
+                      req.body.data.flight_departure_airline,
+                    cf_departure_flight_number:
+                      req.body.data.flight_departure_number,
+                    cf_pick_up_location: req.body.data.pick_up_location_label,
+                    cf_drop_off_location: req.body.data.return_location_label,
+                    cf_drop_off_time: req.body.data.return_time,
+                    // cf_vehicle_class: req.body.data.,
+                    // cf_terminal: req.body.data.,/
+
+                    cf_wifihotspot: cf_wifihotspot1,
+                    cf_tire_and_glass_protection: cf_tire_and_glass_protection1,
+                    cf_sim_card: cf_sim_card1,
+                    cf_promo_sim_card: cf_promo_sim_card1,
+                    cf_silla_para_nios: cf_silla_para_nios1,
+                    cf_tablet__unlimited_internet_data:
+                      cf_tablet__unlimited_internet_data1,
+                    cf_promo_wifihotspot: cf_promo_wifihotspot1,
+                    cf_reservation_made: cf_reservation_made1,
+                    cf_pick_up_date: req.body.data.pick_up_date,
+                    cf_drop_off_date: req.body.data.return_date,
+                    cf_pick_up_time: req.body.data.pick_up_time,
+                    cf_terminal: req.body.data.f381,
+                    cf_gate: req.body.data.f396,
+                    // cf_dl_number: req.body.data.,
+                    // cf_dl_expiration_date: req.body.data.,
+                  },
                 },
               };
-              request(options, function (error, response) {
-                if (error) throw new Error(error);
-                var contact_data_from_freshworks43 = JSON.parse(response.body);
-
-                // console.log(
-                //   contact_data_from_freshworks43.data
-                //     .selected_additional_charges
-                // );
-
-                contact_data_from_freshworks43.data.selected_additional_charges.forEach(
-                  (element) => {
-                    console.log(element.label);
-                    // switch (element.label) {
-                    if (element.label == "Sim Card") {
-                      // console.log(element.label);
-                      cf_sim_card1 = "YES";
-                    } else if (element.label == "Silla Para Niños") {
-                      // console.log(element.label);
-                      cf_silla_para_nios1 = "YES";
-                    } else if (
-                      element.label == "Tablet - Unlimited Internet Data"
-                    ) {
-                      // console.log(element.label);
-                      cf_tablet__unlimited_internet_data1 = "YES";
-                    } else if (element.label == "PROMO ESPECIAL- 2 SIM CARD") {
-                      // console.log(element.label);
-                      cf_promo_sim_card1 = "Yes";
-                    } else if (element.label == "Wifi/Hotspot") {
-                      // console.log(element.label);
-                      cf_wifihotspot1 = "YES";
-                    } else if (element.label == "Tire and Glass Protection") {
-                      // console.log(element.label);
-                      cf_tire_and_glass_protection1 = "YES";
-                    } else if (element.label == "PROMO Wifi/Hotspot") {
-                      // console.log(element.label);
-                      cf_promo_wifihotspot1 = "YES";
-                    }
-                  }
-                );
-                url = `https://rentsmartrac.myfreshworks.com/crm/sales/api/contacts/${element.id}`;
-                headers = {
-                  Authorization: "Token token=VxIxI3hJkd6ar2oyBmMquw",
-                  "Content-Type": "application/json",
-                };
-
-                requestData = {
-                  contact: {
-                    first_name: req.body.data.first_name,
-                    last_name: req.body.data.last_name,
-                    display_name:
-                      req.body.data.first_name + " " + req.body.data.last_name,
-                    city: req.body.data.city,
-                    state: req.body.data.state,
-                    zipcode: req.body.data.zip,
-                    country: req.body.data.country,
-                    email: req.body.data.email,
-                    mobile_number: req.body.data.phone_number,
-                    address: req.body.data.street,
-                    custom_field: {
-                      // flight_departure_date
-
-                      cf_flight_airline: req.body.data.flight_airline,
-                      cf_flight_number: req.body.data.flight_number,
-                      cf_departure_flight_airline:
-                        req.body.data.flight_departure_airline,
-                      cf_departure_flight_number:
-                        req.body.data.flight_departure_number,
-                      cf_pick_up_location: req.body.data.pick_up_location_label,
-                      cf_drop_off_location: req.body.data.return_location_label,
-                      cf_drop_off_time: req.body.data.return_time,
-                      // cf_vehicle_class: req.body.data.,
-                      // cf_terminal: req.body.data.,/
-
-                      cf_wifihotspot: cf_wifihotspot1,
-                      cf_tire_and_glass_protection:
-                        cf_tire_and_glass_protection1,
-                      cf_sim_card: cf_sim_card1,
-                      cf_promo_sim_card: cf_promo_sim_card1,
-                      cf_silla_para_nios: cf_silla_para_nios1,
-                      cf_tablet__unlimited_internet_data:
-                        cf_tablet__unlimited_internet_data1,
-                      cf_promo_wifihotspot: cf_promo_wifihotspot1,
-                      cf_reservation_made: cf_reservation_made1,
-                      cf_pick_up_date: req.body.data.pick_up_date,
-                      cf_drop_off_date: req.body.data.return_date,
-                      cf_pick_up_time: req.body.data.pick_up_time,
-                      cf_terminal: req.body.data.f381,
-                      cf_gate: req.body.data.f396,
-                      // cf_dl_number: req.body.data.,
-                      // cf_dl_expiration_date: req.body.data.,
-                    },
-                  },
-                };
-                // console.log(cf_wifihotspot1);
-                // console.log(cf_promo_sim_card1);
-                // console.log(cf_tablet__unlimited_internet_data1);
-                options = {
-                  url,
-                  method: "PUT",
-                  headers,
-                  json: requestData, // Automatically sets the content-type to application/json
-                };
-                request(options, (error, response, body) => {
-                  if (error) {
-                    console.error(`Error: ${error}`);
-                  } else {
-                    console.log("data updated");
-                    return res.status(200).json({ mgs: "Data Updated" });
-                  }
-                });
+              // console.log(cf_wifihotspot1);
+              // console.log(cf_promo_sim_card1);
+              // console.log(cf_tablet__unlimited_internet_data1);
+              options = {
+                url,
+                method: "PUT",
+                headers,
+                json: requestData, // Automatically sets the content-type to application/json
+              };
+            }).then(() => {
+              request(options, (error, response, body) => {
+                if (error) {
+                  console.error(`Error: ${error}`);
+                } else {
+                  console.log("data updated");
+                  return res.status(200).json({ mgs: "Data Updated" });
+                }
               });
-            }
-          });
-        }
+            });
+          }
+        });
       });
     });
   }
