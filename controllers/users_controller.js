@@ -209,7 +209,7 @@ const test = (req, res) => {
         // console.log(cf_tablet__unlimited_internet_data1);
         options = {
           url,
-          method: "PUT",
+          method: "POST",
           headers,
           json: requestData, // Automatically sets the content-type to application/json
         };
