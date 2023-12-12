@@ -29,7 +29,7 @@ const test = (req, res) => {
       if (error) throw new Error(error);
       // console.log(response.body);
       user_data_from_hqrentals = JSON.parse(response.body);
-      console.log(user_data_from_hqrentals.contact);
+      // console.log(user_data_from_hqrentals.contact);
       // user_data_from_hqrentals.contact.email
       var contact_data_from_freshworks;
       var url =
@@ -62,9 +62,9 @@ const test = (req, res) => {
             var return_date2 = new Date(req.body.data.return_date);
             return_date2 = return_date2.toLocaleDateString();
             // console.log();
-            // console.log(req.body.data.pick_up_time);
-            // console.log(req.body.data.return_date);
-            // console.log(req.body.data.return_time);
+            console.log(req.body.data.pick_up_time);
+            console.log(req.body.data.return_date);
+            console.log(req.body.data.return_time);
             var cf_wifihotspot1 = "NO";
             var cf_tire_and_glass_protection1 = "NO";
             var cf_sim_card1 = "NO";
