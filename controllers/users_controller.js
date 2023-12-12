@@ -1,7 +1,7 @@
 var request = require("request");
 // Configure Cloudinary
 
-const test = (req, res) => {
+const test = async (req, res) => {
   // console.log("test");
   // console.log(req.body);
   var reservation_data = req.body.data;
@@ -43,7 +43,7 @@ const test = (req, res) => {
         method: "GET",
         headers,
       };
-      request(options, (error, response, body) => {
+      await request(options, (error, response, body) => {
         if (error) {
           console.error(`Error: ${error}`);
         } else {
